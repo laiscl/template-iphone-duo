@@ -12,7 +12,8 @@ export function Hero() {
         </div>
       </div>
       <div className="hero-visual">
-        <img className="hero-hands" src="/hero-hands.jpg" alt="" />
+        <img className="hero-hands grip-left" src="/hero-hands.jpg" alt="" />
+        <img className="hero-hands grip-right" src="/hero-hands.jpg" alt="" />
         <div className="hero-stage">
           <DuoDevice />
         </div>

@@ -1,22 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { DuoDevice } from "./DuoDevice";
-import { CameraBack, CoverPhone, OpenPair } from "./illustrations";
 import { PauseIcon, PlayIcon } from "./Icons";
 
 const cards = [
-  { title: "The largest iPhone display ever. In a thin, foldable design.", art: <DuoLock /> },
-  { title: "A new pose for every part of the day.", art: <OpenPair /> },
-  { title: "A camera that faces both ways.", art: <CameraBack /> },
-  { title: "Power that stays with you.", art: <CoverPhone mode="battery" /> },
+  {
+    title: "The largest iPhone display ever. In a thin, foldable design.",
+    art: <DuoDevice pose="tent" screen="lock" />,
+  },
+  {
+    title: "A new pose for every part of the day.",
+    art: <DuoDevice pose="open" screen="home" />,
+  },
+  {
+    title: "A camera that faces both ways.",
+    art: <DuoDevice pose="closed" screen="back" />,
+  },
+  {
+    title: "Power that stays with you.",
+    art: <DuoDevice pose="open" screen="lock" />,
+  },
 ];
-
-function DuoLock() {
-  return (
-    <div className="card-device">
-      <DuoDevice screen="lock" />
-    </div>
-  );
-}
 
 export function Highlights() {
   const trackRef = useRef<HTMLDivElement>(null);

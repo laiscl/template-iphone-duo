@@ -68,6 +68,27 @@ function AppFace({ bg, glyph }: { bg: string; glyph: string }) {
   );
 }
 
+function LockFace() {
+  return (
+    <div className="lock-face">
+      <small>Wed Apr 1</small>
+      <strong>9:41</strong>
+    </div>
+  );
+}
+
+function BackFace() {
+  return (
+    <div className="back-face">
+      <div className="cam-island">
+        <span className="lens" />
+        <span className="lens small" />
+        <span className="flash" />
+      </div>
+    </div>
+  );
+}
+
 function MemoryScene() {
   return (
     <>
@@ -154,14 +175,17 @@ function HomeScene() {
 export function DuoDevice({
   finish = "grafite",
   screen = "home",
+  pose = "open",
 }: {
   finish?: FinishId;
-  screen?: "home" | "lock";
+  screen?: "home" | "lock" | "back";
+  pose?: "open" | "tent" | "closed";
 }) {
   const tone = finishById(finish);
+  const face = screen === "back" ? <BackFace /> : screen === "lock" ? <LockFace /> : null;
   return (
     <div
-      className="fold-wrap"
+      className={`fold-wrap pose-${pose}`}
       data-finish={tone.id}
       style={{ "--frame": tone.frame, "--hinge": tone.hinge, "--lip": tone.lip } as CSSProperties}
     >
@@ -171,14 +195,7 @@ export function DuoDevice({
           <span className="rail-btn vol-down" />
           <div className="bezel">
             <div className="screen">
-              {screen === "lock" ? (
-                <div className="lock-face">
-                  <small>Wed Apr 1</small>
-                  <strong>9:41</strong>
-                </div>
-              ) : (
-                <MemoryScene />
-              )}
+              {face ?? <MemoryScene />}
               <span className="glass-sheen" />
             </div>
           </div>
@@ -188,14 +205,7 @@ export function DuoDevice({
           <span className="rail-btn power" />
           <div className="bezel">
             <div className="screen">
-              {screen === "lock" ? (
-                <div className="lock-face">
-                  <small>Wed Apr 1</small>
-                  <strong>9:41</strong>
-                </div>
-              ) : (
-                <HomeScene />
-              )}
+              {face ?? <HomeScene />}
               <span className="glass-sheen" />
             </div>
           </div>
