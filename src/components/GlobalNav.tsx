@@ -1,6 +1,22 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useEffect, useId, useRef, useState, type HTMLAttributes } from "react";
 import { finishById, formatUSD, globalNav, searchEntries, type BagItem } from "../data";
+import { prefersReducedMotion } from "../motion/poses";
 import { BagIcon, MarkIcon, MenuIcon, SearchIcon } from "./Icons";
+
+function RiseIn({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    if (prefersReducedMotion()) return;
+    gsap.from(ref.current, { y: 14, opacity: 0, duration: 0.5, ease: "power3.out" });
+  });
+  return (
+    <div ref={ref} className={className} {...rest}>
+      {children}
+    </div>
+  );
+}
 
 type Props = {
   bag: BagItem | null;
@@ -160,7 +176,7 @@ export function GlobalNav({ bag, bagOpen, onBagOpenChange, onRemove }: Props) {
                   {bag ? <span className="bag-count">1</span> : null}
                 </button>
                 {bagOpen ? (
-                  <div className="bag-panel" role="dialog" aria-label="Sacola">
+                  <RiseIn className="bag-panel" role="dialog" aria-label="Sacola">
                     {bag ? (
                       <>
                         <p className="bag-title">iPhone Duo</p>
@@ -187,7 +203,7 @@ export function GlobalNav({ bag, bagOpen, onBagOpenChange, onRemove }: Props) {
                         </div>
                       </>
                     )}
-                  </div>
+                  </RiseIn>
                 ) : null}
               </div>
               <button
@@ -210,7 +226,7 @@ export function GlobalNav({ bag, bagOpen, onBagOpenChange, onRemove }: Props) {
       </div>
 
       {active ? (
-        <div className="mega">
+        <RiseIn className="mega">
           <div className="shell mega-inner">
             <p className="mega-note">{active.note}</p>
             <ul className="mega-links">
@@ -223,11 +239,11 @@ export function GlobalNav({ bag, bagOpen, onBagOpenChange, onRemove }: Props) {
               ))}
             </ul>
           </div>
-        </div>
+        </RiseIn>
       ) : null}
 
       {searchOpen ? (
-        <div className="search-panel">
+        <RiseIn className="search-panel">
           <div className="shell">
             {results.length === 0 ? (
               <p className="search-empty">Nenhum resultado para “{query.trim()}”.</p>
@@ -244,7 +260,7 @@ export function GlobalNav({ bag, bagOpen, onBagOpenChange, onRemove }: Props) {
               </ul>
             )}
           </div>
-        </div>
+        </RiseIn>
       ) : null}
 
       {mobileOpen ? (

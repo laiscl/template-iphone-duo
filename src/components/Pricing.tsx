@@ -6,10 +6,11 @@ import {
   monthly,
   storageOptions,
   type BagItem,
-  type FinishId,
   type StorageId,
 } from "../data";
-import { DuoDevice } from "./DuoDevice";
+import { SplitHeading } from "../motion/SplitHeading";
+import { PhoneSlot } from "../three/PhoneSlot";
+import { useFinish } from "../three/gl";
 import { CheckIcon } from "./Icons";
 
 type Props = {
@@ -19,7 +20,7 @@ type Props = {
 };
 
 export function Pricing({ bag, onAdd, onShowBag }: Props) {
-  const [finish, setFinish] = useState<FinishId>("grafite");
+  const { finish, setFinish } = useFinish();
   const [storage, setStorage] = useState<StorageId>("256");
   const selected = storageOptions.find((item) => item.id === storage) ?? storageOptions[0];
   const inBag = bag?.finish === finish && bag.storage === storage;
@@ -28,12 +29,12 @@ export function Pricing({ bag, onAdd, onShowBag }: Props) {
   return (
     <section className="story" id="preco">
       <div className="shell pricing-grid">
-        <div className="pricing-visual" aria-hidden="true">
-          <DuoDevice finish={finish} />
+        <div className="pricing-visual">
+          <PhoneSlot finish={finish} screen="home" label="iPhone Duo no acabamento escolhido. Clique para mudar a pose." />
         </div>
         <div className="pricing-copy">
           <p className="kicker">Comprar</p>
-          <h2 className="feature-heading">Escolha o seu.</h2>
+          <SplitHeading className="feature-heading" text="Escolha o seu." />
           <p className="feature-copy">
             Três acabamentos, três capacidades. Os valores são ilustrativos, em dólares, para este estudo
             visual — não é uma loja.

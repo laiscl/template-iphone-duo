@@ -2042,3 +2042,227 @@ img, svg {
     letter-spacing: var(--tracking-hero-display);
   }
 }
+
+.hero-copy,
+.hero-visual,
+.capsule-wrap,
+.reveal {
+  animation: none;
+}
+
+.hero-visual {
+  height: clamp(480px, 56vw, 700px);
+  margin-top: 8px;
+}
+
+.hero-hands,
+.hero-thumbs {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 112%;
+  width: auto;
+  max-width: none;
+  object-fit: fill;
+  mix-blend-mode: normal;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.hero-thumbs {
+  z-index: 6;
+}
+
+.thumb-left {
+  clip-path: inset(18% 66% 0 12%);
+}
+
+.thumb-right {
+  clip-path: inset(18% 12% 0 66%);
+}
+
+.hero-stage {
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  width: min(45vw, 648px);
+  aspect-ratio: 1.46 / 1;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.hero .capsule-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  z-index: 7;
+  margin: 0;
+  width: min(560px, 72%);
+  padding: 0;
+}
+
+.hero .capsule {
+  border: 1px solid var(--color-hairline-silver);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.phone-slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+}
+
+.phone-view,
+.phone-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.phone-fallback {
+  display: grid;
+  place-items: center;
+}
+
+.phone-fallback .fold-wrap {
+  width: min(100%, 640px);
+}
+
+.phone-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero-stage .phone-slot {
+  min-height: 0;
+}
+
+.pose-row .phone-slot {
+  height: min(420px, 54vw);
+}
+
+.closer-stage,
+.camera-stage {
+  height: min(520px, 72vw);
+  min-height: 360px;
+}
+
+.feature-art .phone-slot,
+.family-stage .phone-slot {
+  height: 340px;
+}
+
+.pricing-visual .phone-slot {
+  height: 460px;
+}
+
+.hl-visual .phone-slot {
+  height: 100%;
+  min-height: 0;
+}
+
+.display-pin {
+  height: 220vh;
+}
+
+.display-sticky {
+  position: sticky;
+  top: 88px;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.display-stage {
+  height: min(54vh, 640px);
+}
+
+.split-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.split-word {
+  display: inline-block;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.swatch,
+.pose-pill,
+.storage-option,
+.pill,
+.icon-btn {
+  transition:
+    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    outline-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 860px) {
+  .display-pin {
+    height: 180vh;
+  }
+
+  .display-sticky {
+    top: 96px;
+    height: auto;
+    min-height: calc(100vh - 110px);
+  }
+
+  .hero-visual {
+    height: 560px;
+  }
+
+  .hero-hands,
+  .hero-thumbs {
+    width: 188vw;
+    height: auto;
+    top: 18%;
+  }
+
+  .hero-stage {
+    width: min(74vw, 300px);
+    top: 22%;
+  }
+
+  .hero .capsule-wrap {
+    width: calc(100% - 28px);
+    bottom: 7%;
+  }
+
+  .cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    display: none;
+  }
+}

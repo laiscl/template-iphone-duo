@@ -1,23 +1,29 @@
 import { useEffect, useRef, useState } from "react";
-import { DuoDevice } from "./DuoDevice";
+import type { PoseId, ScreenId } from "../motion/poses";
+import { SplitHeading } from "../motion/SplitHeading";
+import { PhoneSlot } from "../three/PhoneSlot";
 import { PauseIcon, PlayIcon } from "./Icons";
 
-const cards = [
+const cards: { title: string; pose: PoseId; screen: ScreenId }[] = [
   {
     title: "The largest iPhone display ever. In a thin, foldable design.",
-    art: <DuoDevice pose="tent" screen="lock" />,
+    pose: "tent",
+    screen: "lock",
   },
   {
     title: "A new pose for every part of the day.",
-    art: <DuoDevice pose="open" screen="home" />,
+    pose: "open",
+    screen: "home",
   },
   {
     title: "A camera that faces both ways.",
-    art: <DuoDevice pose="closed" screen="back" />,
+    pose: "closed",
+    screen: "back",
   },
   {
     title: "Power that stays with you.",
-    art: <DuoDevice pose="open" screen="lock" />,
+    pose: "open",
+    screen: "lock",
   },
 ];
 
@@ -79,7 +85,7 @@ export function Highlights() {
   return (
     <section className="band" id="destaques">
       <div className="shell band-head">
-        <h2 className="feature-heading">Get the highlights.</h2>
+        <SplitHeading className="feature-heading" text="Get the highlights." />
         <a className="text-link" href="#design">
           Watch the film ›
         </a>
@@ -104,8 +110,8 @@ export function Highlights() {
         {cards.map((card, cardIndex) => (
           <article className="hl-card" data-card="" key={card.title}>
             <h3>{card.title}</h3>
-            <div className="hl-visual" aria-hidden="true">
-              {card.art}
+            <div className="hl-visual">
+              <PhoneSlot pose={card.pose} screen={card.screen} label={card.title} />
             </div>
             <span className="sr-only">
               Destaque {cardIndex + 1} de {cards.length}
