@@ -1,13 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import { CameraBack, CoverPhone, FlowScreen, OpenPair } from "./illustrations";
+import { DuoDevice } from "./DuoDevice";
+import { CameraBack, CoverPhone, OpenPair } from "./illustrations";
 import { PauseIcon, PlayIcon } from "./Icons";
 
 const cards = [
-  { title: "Abre. E continua fino.", art: <OpenPair /> },
-  { title: "A imagem atravessa a dobra.", art: <FlowScreen /> },
-  { title: "Uma câmera, dois lados.", art: <CameraBack /> },
-  { title: "Bateria para o dia aberto.", art: <CoverPhone mode="battery" /> },
+  { title: "The largest iPhone display ever. In a thin, foldable design.", art: <DuoLock /> },
+  { title: "A new pose for every part of the day.", art: <OpenPair /> },
+  { title: "A camera that faces both ways.", art: <CameraBack /> },
+  { title: "Power that stays with you.", art: <CoverPhone mode="battery" /> },
 ];
+
+function DuoLock() {
+  return (
+    <div className="card-device">
+      <DuoDevice screen="lock" />
+    </div>
+  );
+}
 
 export function Highlights() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -67,9 +76,9 @@ export function Highlights() {
   return (
     <section className="band" id="destaques">
       <div className="shell band-head">
-        <h2 className="feature-heading">Destaques.</h2>
+        <h2 className="feature-heading">Get the highlights.</h2>
         <a className="text-link" href="#design">
-          Ver todos os destaques ›
+          Watch the film ›
         </a>
       </div>
       <div

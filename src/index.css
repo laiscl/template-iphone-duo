@@ -619,18 +619,19 @@ img, svg {
 
 .hero-stage {
   position: relative;
-  min-height: calc(var(--panel-h) + 8px);
   display: grid;
   place-items: center;
 }
 
 .fold-wrap {
-  width: calc(var(--panel-w) * 2 + 18px);
-  height: var(--panel-h);
+  width: min(860px, 100%);
+  aspect-ratio: 1.46 / 1;
+  height: auto;
   perspective: 1800px;
-  perspective-origin: 50% 42%;
+  perspective-origin: 50% 46%;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  margin-inline: auto;
 }
 
 .fold {
@@ -643,7 +644,9 @@ img, svg {
 }
 
 .panel {
-  width: var(--panel-w);
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
@@ -651,26 +654,27 @@ img, svg {
 }
 
 .panel-left {
-  transform: rotateY(17deg);
+  transform: rotateY(11deg);
   transform-origin: right center;
-  margin-right: -4px;
+  margin-right: -1px;
 }
 
 .panel-right {
-  transform: rotateY(-17deg);
+  transform: rotateY(-11deg);
   transform-origin: left center;
-  margin-left: -4px;
+  margin-left: -1px;
 }
 
 .bezel {
   height: 100%;
-  padding: 8px;
-  background: var(--frame, #1c1c1e);
+  padding: 5px;
+  background:
+    linear-gradient(165deg, #9b9ea3 0%, #3a3a3e 12%, var(--frame, #1c1c1e) 28%, #111113 100%);
   position: relative;
   box-shadow:
-    inset 0 0 0 1px var(--lip, #c7c7cc),
-    inset 0 0 0 3px color-mix(in srgb, var(--frame, #1c1c1e) 72%, #000),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    inset 0 0 0 2px #2c2c2e,
+    0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
 .panel-left .bezel {
@@ -722,20 +726,13 @@ img, svg {
 }
 
 .hinge {
-  width: 14px;
-  margin: 18px 0;
-  border-radius: 7px;
+  width: 3px;
+  margin: 10px 0;
+  border-radius: 2px;
   position: relative;
   z-index: 3;
-  transform: translateZ(28px);
-  background: linear-gradient(
-    90deg,
-    #050506 0%,
-    #3a3a3e 28%,
-    var(--lip, #c7c7cc) 50%,
-    #3a3a3e 72%,
-    #050506 100%
-  );
+  transform: translateZ(12px);
+  background: linear-gradient(90deg, #1a1a1c, #d5d5da 48%, #1a1a1c);
 }
 
 .screen {
@@ -1037,10 +1034,83 @@ img, svg {
 .capsule-wrap {
   position: relative;
   z-index: 5;
-  margin-top: -76px;
+  margin-top: 22px;
   display: flex;
   justify-content: center;
   padding: 0 var(--page-gutter);
+}
+
+.hero-hands {
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  width: min(1080px, 124%);
+  transform: translateX(-50%);
+  mix-blend-mode: multiply;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-copy,
+.hero-visual,
+.capsule-wrap {
+  animation: hero-in 0.9s ease both;
+}
+
+.capsule-wrap {
+  animation-delay: 0.12s;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  animation: hero-in 0.8s ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 28%;
+}
+
+.memory-photo,
+.dune-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lock-face {
+  position: absolute;
+  inset: 0;
+  background: url("/dune-wallpaper.jpg") center / cover no-repeat;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.lock-face small {
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+
+.lock-face strong {
+  font-family: var(--font-sf-pro-display);
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1;
 }
 
 .capsule {
@@ -1186,9 +1256,19 @@ img, svg {
 
 .hl-visual {
   margin-top: auto;
-  height: 340px;
+  height: 280px;
   margin-inline: -12px;
   overflow: hidden;
+  display: grid;
+  place-items: end center;
+}
+
+.card-device {
+  width: 118%;
+}
+
+.card-device .fold-wrap {
+  width: 100%;
 }
 
 .hl-visual .illus {
@@ -1499,6 +1579,23 @@ img, svg {
   padding-top: var(--spacing-12);
 }
 
+.credit {
+  margin-top: var(--spacing-12);
+  color: #707070;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.12px;
+}
+
+.footer .credit a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.footer .credit a:hover {
+  text-decoration: underline;
+}
+
 @container (max-width: 230px) {
   .widget-row {
     height: 78px;
@@ -1636,11 +1733,16 @@ img, svg {
   }
 
   .hero-visual {
-    --panel-w: calc((100vw - 28px) / 2);
+    --panel-w: 100%;
   }
 
-  .hand {
-    display: none;
+  .fold-wrap {
+    width: min(860px, calc(100% - 8px));
+  }
+
+  .hero-hands {
+    width: 140%;
+    bottom: -2%;
   }
 
   .capsule-wrap {
@@ -1682,6 +1784,135 @@ img, svg {
     font-weight: var(--font-weight-semibold);
     line-height: 1.14;
     letter-spacing: 0;
+  }
+}
+
+.center-title,
+.center-block {
+  text-align: center;
+}
+
+.center-copy {
+  max-width: 62ch;
+  margin: 20px auto 0;
+}
+
+.center-block .feature-copy,
+.center-block .text-link {
+  margin-top: 20px;
+}
+
+.pose-row {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr 0.7fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.closer {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.pose-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pose-pill {
+  border: 0;
+  background: var(--color-studio-mist);
+  color: var(--color-ink);
+  border-radius: var(--radius-buttons);
+  min-height: 36px;
+  padding: 6px 16px;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+
+.pose-pill[aria-pressed="true"] {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.closer-stage .fold-wrap,
+.display-stage .fold-wrap,
+.pose-row .fold-wrap {
+  width: 100%;
+}
+
+.display-grid,
+.camera-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.spec-stack {
+  display: grid;
+  gap: 22px;
+}
+
+.spec-stack dt {
+  font-family: var(--font-sf-pro-display);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.spec-stack dd {
+  margin: 4px 0 0;
+  color: var(--color-slate);
+  font-size: 14px;
+}
+
+.display-stage {
+  margin-top: 36px;
+}
+
+.story-photo {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.battery-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.pose-closed .panel-left {
+  transform: rotateY(48deg);
+}
+
+.pose-closed .panel-right {
+  transform: rotateY(-48deg);
+}
+
+.pose-seated .fold,
+.pose-standing .fold {
+  transform: rotateX(22deg);
+}
+
+@media (max-width: 860px) {
+  .pose-row,
+  .closer,
+  .display-grid,
+  .camera-grid,
+  .battery-stats {
+    grid-template-columns: 1fr;
   }
 }
 

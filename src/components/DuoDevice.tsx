@@ -71,38 +71,10 @@ function AppFace({ bg, glyph }: { bg: string; glyph: string }) {
 function MemoryScene() {
   return (
     <>
-      <svg className="memory-art" viewBox="0 0 360 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <rect width="360" height="560" fill="#6f8caf" />
-        <path fill="#141416" d="M70 40c40-28 120-36 180-8 28 14 48 40 52 78 8 70-10 120-6 180-36-90-90-130-150-124-52 6-86 48-96 110C28 250 24 140 70 40Z" />
-        <path fill="#141416" d="M46 210c-16 80 4 200 36 310 18-120 8-220 28-300-16-6-42-8-64-10Z" />
-        <path fill="#1a1a1c" d="M118 150c28-36 90-48 132-16 10 28-22 46-62 50-36 4-64-8-70-34Z" />
-        <ellipse cx="198" cy="214" rx="62" ry="74" fill="#e7b79a" />
-        <ellipse cx="176" cy="228" rx="48" ry="40" fill="#f0c6ae" opacity="0.55" />
-        <ellipse cx="140" cy="228" rx="10" ry="16" fill="#d7a588" />
-        <path d="M158 196c10-6 22-6 30 1" stroke="#2a211c" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        <path d="M214 194c10-6 22-5 30 2" stroke="#2a211c" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        <ellipse cx="172" cy="214" rx="5" ry="3.4" fill="#1c1c1e" />
-        <ellipse cx="228" cy="214" rx="5" ry="3.4" fill="#1c1c1e" />
-        <path fill="#f4f1ea" d="M0 248c60-28 120-8 180 6 50 12 90 6 140-8 20-6 30-4 40-2v322H0Z" />
-        <path fill="#e7e2d8" d="M0 332c70-18 130 4 190 10 50 6 90-4 130-8v18c-40 10-80 6-130 0-70-8-130-16-190 4Z" />
-        <path fill="#f7f5f1" d="M0 368c80-20 140 6 210 8 40 2 80-8 110-4v16c-40 8-80 2-120-2-70-6-140-14-200 6Z" />
-        <path fill="#d5ddd4" d="M0 402c90-16 150 8 220 10 40 2 80-6 120-2v16c-46 8-86 2-126-2-70-6-150-12-214 8Z" />
-        <path fill="#f3f0ea" d="M0 436c80-14 150 6 220 8 46 2 80-4 120 0v18c-48 6-90 0-130-4-70-6-150-10-210 8Z" />
-        <path fill="#c9d2c8" d="M0 470c100-12 160 8 240 8 40 0 70-4 100 2v20H0Z" />
-        <g transform="translate(246 338)">
-          <ellipse cx="28" cy="26" rx="7" ry="16" transform="rotate(24 28 26)" fill="#5f8a52" />
-          <circle cy="-8" r="13" fill="#d45386" />
-          <circle cx="14" cy="2" r="13" fill="#e07aa0" />
-          <circle cx="8" cy="16" r="12" fill="#c43e74" />
-          <circle cx="-12" cy="10" r="12" fill="#e07aa0" />
-          <circle cx="-10" cy="-4" r="11" fill="#d45386" />
-          <circle r="6" fill="#f6d7c8" />
-        </g>
-        <rect y="470" width="360" height="90" fill="#000" opacity="0.34" />
-      </svg>
+      <img className="memory-photo" src="/memory-portrait.jpg" alt="" />
       <div className="memory-caption">
-        <strong>Neste dia</strong>
-        <span>12 de abril</span>
+        <strong>On This Day</strong>
+        <span>April 1, 2025</span>
       </div>
       <span className="memory-play">
         <svg viewBox="0 0 12 12" aria-hidden="true">
@@ -116,13 +88,7 @@ function MemoryScene() {
 function HomeScene() {
   return (
     <div className="home">
-      <svg className="dunes" viewBox="0 0 400 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <rect width="400" height="640" fill="#f6ead8" />
-        <path d="M0 250c80 30 120 90 200 86 90-4 120-70 200-48v352H0Z" fill="#ecd7b6" />
-        <path d="M0 340c70-20 130 40 210 28 70-10 110-36 190-16v288H0Z" fill="#e2c59a" />
-        <path d="M0 470c90-30 150 16 240 8 60-6 100-20 160-6v168H0Z" fill="#f3e2c8" />
-        <path d="M40 300c30 10 40 28 18 40-16 8-40-6-52-18 6-10 20-22 34-22Z" fill="#d7b48a" opacity="0.7" />
-      </svg>
+      <img className="dune-photo" src="/dune-wallpaper.jpg" alt="" />
       <div className="status">
         <span>9:41</span>
         <span className="status-icons">
@@ -146,9 +112,9 @@ function HomeScene() {
       </div>
       <div className="widget-row">
         <div className="weather">
-          <p className="weather-city">Lisboa</p>
-          <p className="weather-temp">22°</p>
-          <p className="weather-meta">Parcialmente nublado<br />Máx. 26° · Mín. 17°</p>
+          <p className="weather-city">San Francisco</p>
+          <p className="weather-temp">54°</p>
+          <p className="weather-meta">Partly Cloudy<br />H:57° L:49°</p>
         </div>
         <div className="map-card">
           <svg viewBox="0 0 160 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -160,7 +126,7 @@ function HomeScene() {
             <circle cx="96" cy="58" r="2.5" fill="#fff" />
             <path d="M96 64c8 10 0 18 0 18s-8-8 0-18Z" fill="#e15a4a" />
           </svg>
-          <span className="map-label">Alfama</span>
+          <span className="map-label">Channel St</span>
         </div>
       </div>
       <div className="icon-area">
@@ -185,7 +151,13 @@ function HomeScene() {
   );
 }
 
-export function DuoDevice({ finish = "grafite" }: { finish?: FinishId }) {
+export function DuoDevice({
+  finish = "grafite",
+  screen = "home",
+}: {
+  finish?: FinishId;
+  screen?: "home" | "lock";
+}) {
   const tone = finishById(finish);
   return (
     <div
@@ -199,7 +171,14 @@ export function DuoDevice({ finish = "grafite" }: { finish?: FinishId }) {
           <span className="rail-btn vol-down" />
           <div className="bezel">
             <div className="screen">
-              <MemoryScene />
+              {screen === "lock" ? (
+                <div className="lock-face">
+                  <small>Wed Apr 1</small>
+                  <strong>9:41</strong>
+                </div>
+              ) : (
+                <MemoryScene />
+              )}
               <span className="glass-sheen" />
             </div>
           </div>
@@ -209,7 +188,14 @@ export function DuoDevice({ finish = "grafite" }: { finish?: FinishId }) {
           <span className="rail-btn power" />
           <div className="bezel">
             <div className="screen">
-              <HomeScene />
+              {screen === "lock" ? (
+                <div className="lock-face">
+                  <small>Wed Apr 1</small>
+                  <strong>9:41</strong>
+                </div>
+              ) : (
+                <HomeScene />
+              )}
               <span className="glass-sheen" />
             </div>
           </div>

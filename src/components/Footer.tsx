@@ -64,6 +64,12 @@ export function Footer() {
           <p>Estudo visual. Renders originais.</p>
           <p>Brasil</p>
         </div>
+        <p className="credit">
+          Desenvolvido por{" "}
+          <a href="https://github.com/laiscl" target="_blank" rel="noopener">
+            @laiscl
+          </a>
+        </p>
       </div>
     </footer>
   );

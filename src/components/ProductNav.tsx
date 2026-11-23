@@ -7,10 +7,10 @@ export function ProductNav() {
         </a>
         <div className="local-actions">
           <a className="pill pill-outline" href="#destaques">
-            Explorar
+            Explore
           </a>
           <a className="pill pill-price" href="#preco">
-            Comprar
+            View pricing
           </a>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { BagItem } from "./data";
-import { AnchorNav } from "./components/AnchorNav";
 import { Footer } from "./components/Footer";
 import { GlobalNav } from "./components/GlobalNav";
 import { Hero } from "./components/Hero";
@@ -27,7 +26,6 @@ export default function App() {
       <ProductNav />
       <main id="conteudo">
         <Hero />
-        <AnchorNav />
         <Highlights />
         <Stories />
         <Pricing
